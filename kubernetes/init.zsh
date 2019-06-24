@@ -42,6 +42,7 @@ alias kbgpa='kubectl get po --all-namespaces'
 alias kbl='kubectl logs'
 alias kblf='kubectl logs --follow'
 alias kbr='kubectl run'
+alias kbpn='kubectl get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName'
 
 alias wkb='watch -n 1 kubectl'
 
