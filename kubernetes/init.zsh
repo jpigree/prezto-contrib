@@ -50,5 +50,14 @@ kbn () {
   kubectl config set-context $(kubectl config current-context) --namespace=$1
 }
 
+kbcani()    {
+  local serviceaccount_namespace=$1
+  shift
+  local serviceaccount=$1
+  shift
+
+  kubectl auth can-i --as=system:serviceaccount:$serviceaccount_namespace:$serviceaccount $@
+}
+
 # name formatting
 zstyle ':prezto:module:contrib-kubernetes' dev-clusters-default 'dev'
