@@ -41,6 +41,8 @@ alias kbg='kubectl get'
 alias kbl='kubectl logs'
 alias kblf='kubectl logs --follow'
 alias kbr='kubectl run'
+alias kbpn='kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name'
+alias kbru='kubectl describe node | grep -A5 "Allocated"'
 
 alias wkb='watch -n 1 kubectl'
 
