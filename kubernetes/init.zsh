@@ -59,5 +59,11 @@ kbcani()    {
   kubectl auth can-i --as=system:serviceaccount:$serviceaccount_namespace:$serviceaccount $@
 }
 
+check_roles_serviceaccount_bindings()   {
+  kubectl get rolebindings,clusterrolebindings \
+    --all-namespaces  \
+    -o custom-columns='KIND:kind,NAMESPACE:metadata.namespace,NAME:metadata.name,SERVICE_ACCOUNTS:subjects[?(@.kind=="ServiceAccount")].name'
+}
+
 # name formatting
 zstyle ':prezto:module:contrib-kubernetes' dev-clusters-default 'dev'
