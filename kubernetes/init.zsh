@@ -50,6 +50,10 @@ ka() {
     kubectl $@ --all-namespaces | grep -v kube-system
 }
 
+wka()   {
+    watch -n 1 "kubectl $@ --all-namespaces | grep -v kube-system"
+}
+
 kbn () {
   kubectl config set-context $(kubectl config current-context) --namespace=$1
 }
