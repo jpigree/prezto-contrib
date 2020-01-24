@@ -46,6 +46,10 @@ alias kbpn='kubectl get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status
 
 alias wkb='watch -n 1 kubectl'
 
+ka() {
+    kubectl $@ --all-namespaces | grep -v kube-system
+}
+
 kbn () {
   kubectl config set-context $(kubectl config current-context) --namespace=$1
 }
